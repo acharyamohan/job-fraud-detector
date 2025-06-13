@@ -6,12 +6,20 @@ Built for the DS-1 Hackathon Challenge
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import streamlit as st
+
+# Import other libraries with error handling
+try:
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    MATPLOTLIB_AVAILABLE = True
+except ImportError:
+    MATPLOTLIB_AVAILABLE = False
+    st.warning("Matplotlib/Seaborn not available. Using Plotly for all visualizations.")
+
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
@@ -426,12 +434,17 @@ def main():
                     return 'background-color: #dcfce7; color: #16a34a;'
             
             # Display styled dataframe
-            styled_df = df_results[['title', 'company', 'location', 'prediction', 'fraud_probability', 'risk_level']].style\
-                .applymap(style_prediction, subset=['prediction'])\
-                .applymap(style_risk, subset=['risk_level'])\
-                .format({'fraud_probability': '{:.2f}'})
-            
-            st.dataframe(styled_df, use_container_width=True, height=400)
+            try:
+                styled_df = df_results[['title', 'company', 'location', 'prediction', 'fraud_probability', 'risk_level']].style\
+                    .applymap(style_prediction, subset=['prediction'])\
+                    .applymap(style_risk, subset=['risk_level'])\
+                    .format({'fraud_probability': '{:.2f}'})
+                
+                st.dataframe(styled_df, use_container_width=True, height=400)
+            except:
+                # Fallback to regular dataframe if styling fails
+                st.dataframe(df_results[['title', 'company', 'location', 'prediction', 'fraud_probability', 'risk_level']], 
+                           use_container_width=True, height=400)
             
             # Download results
             csv = df_results.to_csv(index=False)
