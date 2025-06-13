@@ -129,7 +129,7 @@ streamlit run app.py
 ![Graphs](https://github.com/acharyamohan/job-fraud-detector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/visual_analysis.png)
 
 ### Suspicious Postings
-![Details](https://github.com/acharyamohan/job-fraud-zdetector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/suspicious_job.png)
+![Details](https://github.com/acharyamohan/job-fraud-detector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/suspicious_job.png)
 
 ---
 
