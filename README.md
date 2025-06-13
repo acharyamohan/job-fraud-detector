@@ -87,6 +87,24 @@ streamlit run app.py
 - **Train and Apply ML Model:**  
   Use the detected results to train a model, then apply it to new data.
 
+###5. **Dashboard & Outputs**
+Metrics row: Total, fraudulent, genuine, high-risk jobs.
+Pie chart: Fraudulent vs. genuine distribution.
+Bar chart: Risk levels.
+Histogram: Fraud probability scores.
+Results table: Styled by fraud/risk.
+Detailed suspicious jobs: Expandable panels.
+Download buttons: CSV for results, trained model/scaler.
+6. Example Use Cases
+Job Seekers: Check if a posting is suspicious before applying.
+Recruiters: Audit job boards for scam/fake ads.
+Analysts: Study trends in fraudulent postings.
+7. Extensibility
+Easily add more features (new keywords, ML models, NLP analysis).
+Integrate with actual labeled data for supervised ML.
+Deploy to cloud for public access.
+
+
 ---
 
 ## Example
