@@ -77,14 +77,6 @@ Upload CSV files with these columns:
 3. Make your changes
 4. Submit a pull request
 
-## 📄 License
 
-This project is open source and available under the MIT License.
-
-## ⚠️ Disclaimer
-
-This tool is for educational and informational purposes. Always verify job postings through official channels and exercise caution when job hunting.
-
----
 
 **Built for the DS-1 Hackathon Challenge** 🏆
