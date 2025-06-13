@@ -4,79 +4,106 @@ An AI-powered system to detect fraudulent job postings and protect job seekers f
 
 ## 🚀 Live Demo
 
-**Try it now:** [Job Fraud Detector](https://your-app-name.streamlit.app)
+**Try it now:** [Job Fraud Detector](https://job-fraud-detector.streamlit.app/)
 
-## 📋 Features
 
-- **Real-time Analysis**: Upload CSV files or analyze individual job postings
-- **AI-Powered Detection**: Advanced pattern recognition for fraud indicators
-- **Interactive Dashboard**: Visual analytics and insights
-- **Risk Assessment**: Jobs classified as High, Medium, or Low risk
-- **Downloadable Reports**: Export results for further analysis
+## Project Overview
 
-## 🔍 How It Works
+**Job Fraud Detector** is an AI-powered Streamlit web application designed to help users identify potentially fraudulent job postings. The app empowers job seekers, recruiters, and analysts to upload job datasets, analyze postings using both rule-based heuristics and machine learning, and visualize results via interactive dashboards. With features for model training and real-time prediction on new data, this tool aims to increase safety and transparency in the online job market.
 
-1. **Data Input**: Upload job posting data or use sample data
-2. **AI Analysis**: System analyzes text patterns, keywords, and suspicious indicators
-3. **Risk Scoring**: Each job gets a fraud probability score (0-1)
-4. **Classification**: Jobs are marked as Genuine or Fraudulent
-5. **Insights**: View detailed analytics and fraud patterns
+---
 
-## 📊 Key Fraud Indicators
+## Key Features & Technologies Used
 
-- Unrealistic salary promises
-- Requests for upfront payments
-- Vague job descriptions
-- Urgency keywords ("immediate", "urgent")
-- Missing company information
-- Suspicious contact methods
+### 🔍 Key Features
+- **Rule-Based Fraud Detection**  
+  Uses heuristic scoring and keyword analysis to flag suspicious job postings.
 
-## 🛠️ Technology Stack
+- **Machine Learning Model Training**  
+  Trains a Random Forest classifier using rule-based output as labels to capture complex fraud patterns.
 
-- **Python**: Core logic and data processing
-- **Streamlit**: Web application framework
-- **Pandas**: Data manipulation and analysis
-- **Plotly**: Interactive visualizations
-- **Scikit-learn**: Machine learning components
-- **RegEx**: Pattern matching for fraud detection
+- **Prediction on New Data**  
+  Apply the trained model to new or test datasets to classify jobs as fraudulent or genuine.
 
-## 📈 Sample Results
+- **Interactive Dashboard**  
+  Visualizes results with pie charts, bar graphs, distribution plots, metrics, and detailed tables.
 
-The system typically achieves:
-- High accuracy in detecting obvious fraud patterns
-- Low false positive rates for legitimate jobs
-- Comprehensive risk assessment with explanations
+- **Sample Data & Easy Upload**  
+  Test the app instantly with built-in sample data or upload your own CSV files.
 
-## 🚀 Local Development
+- **Downloadable Reports & Models**  
+  Download analysis results, trained ML models, and scalers for further use.
+
+### 🛠 Technologies Used
+- **Python 3.x**
+- **[Streamlit](https://streamlit.io/):** For web app UI and dashboarding
+- **[scikit-learn](https://scikit-learn.org/):** Machine learning (Random Forest, scaling, splitting)
+- **[pandas](https://pandas.pydata.org/):** Data manipulation and analysis
+- **[joblib](https://joblib.readthedocs.io/):** Model and scaler serialization
+- **[plotly](https://plotly.com/):** Advanced and interactive charts/visualizations
+- **[numpy](https://numpy.org/):** Numerical processing
+
+---
+
+## Setup Instructions
+
+### 1. **Clone the Repository**
+```bash
+git clone https://github.com/acharyamohan/job-fraud-detector2.git
+cd job-fraud-detector2
+```
+
+### 2. **Install Required Dependencies**
+It’s recommended to use a virtual environment.
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/job-fraud-detector.git
-cd job-fraud-detector
-
-# Install dependencies
 pip install -r requirements.txt
+```
+If `requirements.txt` is missing, install manually:
+```bash
+pip install streamlit pandas scikit-learn joblib plotly numpy
+```
 
-# Run the app
+### 3. **Run the Application**
+```bash
 streamlit run app.py
 ```
 
-## 📝 Data Format
+### 4. **Using the App**
 
-Upload CSV files with these columns:
-- `title`: Job title
-- `company`: Company name
-- `location`: Job location
-- `description`: Detailed job description
-- `requirements`: Job requirements and qualifications
+- **Choose a Mode:**  
+  Select from the sidebar:
+  - Rule-based Fraud Detection (with Dashboard)
+  - Train ML Model Using Rule-based Results
+  - Predict on Test Data with Trained ML Model (with Dashboard)
 
-## 🤝 Contributing
+- **Load Data:**  
+  Upload your own CSV file or use the provided sample data.  
+  CSV columns expected: `title`, `description`, `company`, `location`, `requirements`
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+- **Explore Results:**  
+  View dashboards, download results, and inspect high-risk jobs.
+
+- **Train and Apply ML Model:**  
+  Use the detected results to train a model, then apply it to new data.
+
+---
+
+## Example
+
+![Job Fraud Detector Dashboard Screenshot](https://user-images.githubusercontent.com/your_screenshot.png) 
 
 
 
-**Built for the DS-1 Hackathon Challenge** 🏆
+## Acknowledgements
+
+- Inspired by the need for safer online job searching.
+- Built with Streamlit, scikit-learn, pandas, and plotly.
+
+---
+
+**Contributions, bug reports, and ideas welcome!**
+
+---
+
+Let me know if you’d like this tailored for a specific deployment environment or if you want a sample screenshot link!
