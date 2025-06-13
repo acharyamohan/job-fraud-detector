@@ -49,7 +49,7 @@ An AI-powered system to detect fraudulent job postings and protect job seekers f
 
 ### 1. **Clone the Repository**
 ```bash
-git clone https://github.com/acharyamohan/job-fraud-detector2.git
+git clone https://github.com/acharyamohan/job-fraud-detector.git
 cd job-fraud-detector2
 ```
 
