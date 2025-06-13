@@ -7,18 +7,23 @@ Built for the DS-1 Hackathon Challenge
 import pandas as pd
 import numpy as np
 import streamlit as st
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
-# Import other libraries with error handling
+# Import visualization libraries with error handling
+try:
+    import plotly.express as px
+    import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
+    PLOTLY_AVAILABLE = True
+except ImportError:
+    PLOTLY_AVAILABLE = False
+    st.error("Plotly not available. Please install plotly to use visualizations.")
+
 try:
     import matplotlib.pyplot as plt
     import seaborn as sns
     MATPLOTLIB_AVAILABLE = True
 except ImportError:
     MATPLOTLIB_AVAILABLE = False
-    st.warning("Matplotlib/Seaborn not available. Using Plotly for all visualizations.")
 
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -388,31 +393,48 @@ def main():
 
         with tab1:
             # Dashboard view
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                # Pie chart for fraud vs genuine
-                fig_pie = px.pie(
-                    values=[genuine_jobs, fraudulent_jobs],
-                    names=['Genuine', 'Fraudulent'],
-                    title="Job Classification Distribution",
-                    color_discrete_map={'Genuine': '#10B981', 'Fraudulent': '#EF4444'}
-                )
-                fig_pie.update_traces(textposition='inside', textinfo='percent+label')
-                st.plotly_chart(fig_pie, use_container_width=True)
-            
-            with col2:
-                # Risk level distribution
-                risk_counts = df_results['risk_level'].value_counts()
-                fig_risk = px.bar(
-                    x=risk_counts.index,
-                    y=risk_counts.values,
-                    title="Risk Level Distribution",
-                    color=risk_counts.index,
-                    color_discrete_map={'Low': '#10B981', 'Medium': '#F59E0B', 'High': '#EF4444'}
-                )
-                fig_risk.update_layout(showlegend=False)
-                st.plotly_chart(fig_risk, use_container_width=True)
+            if PLOTLY_AVAILABLE:
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    # Pie chart for fraud vs genuine
+                    fig_pie = px.pie(
+                        values=[genuine_jobs, fraudulent_jobs],
+                        names=['Genuine', 'Fraudulent'],
+                        title="Job Classification Distribution",
+                        color_discrete_map={'Genuine': '#10B981', 'Fraudulent': '#EF4444'}
+                    )
+                    fig_pie.update_traces(textposition='inside', textinfo='percent+label')
+                    st.plotly_chart(fig_pie, use_container_width=True)
+                
+                with col2:
+                    # Risk level distribution
+                    risk_counts = df_results['risk_level'].value_counts()
+                    fig_risk = px.bar(
+                        x=risk_counts.index,
+                        y=risk_counts.values,
+                        title="Risk Level Distribution",
+                        color=risk_counts.index,
+                        color_discrete_map={'Low': '#10B981', 'Medium': '#F59E0B', 'High': '#EF4444'}
+                    )
+                    fig_risk.update_layout(showlegend=False)
+                    st.plotly_chart(fig_risk, use_container_width=True)
+            else:
+                # Fallback text-based dashboard
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.subheader("Job Classification")
+                    st.write(f"📊 **Distribution:**")
+                    st.write(f"✅ Genuine: {genuine_jobs} ({genuine_jobs/total_jobs*100:.1f}%)")
+                    st.write(f"🚨 Fraudulent: {fraudulent_jobs} ({fraudulent_jobs/total_jobs*100:.1f}%)")
+                
+                with col2:
+                    st.subheader("Risk Levels")
+                    risk_counts = df_results['risk_level'].value_counts()
+                    st.write(f"📊 **Risk Distribution:**")
+                    for risk, count in risk_counts.items():
+                        emoji = "🟢" if risk == "Low" else "🟡" if risk == "Medium" else "🔴"
+                        st.write(f"{emoji} {risk}: {count} ({count/total_jobs*100:.1f}%)")
 
         with tab2:
             # Results table
@@ -490,16 +512,26 @@ def main():
             # Analytics
             st.subheader("📈 Fraud Detection Analytics")
             
-            # Fraud probability distribution
-            fig_hist = px.histogram(
-                df_results,
-                x='fraud_probability',
-                nbins=20,
-                title="Fraud Probability Distribution",
-                labels={'fraud_probability': 'Fraud Probability', 'count': 'Number of Jobs'}
-            )
-            fig_hist.update_traces(marker_color='lightblue', marker_line_color='navy', marker_line_width=1)
-            st.plotly_chart(fig_hist, use_container_width=True)
+            if PLOTLY_AVAILABLE:
+                # Fraud probability distribution
+                fig_hist = px.histogram(
+                    df_results,
+                    x='fraud_probability',
+                    nbins=20,
+                    title="Fraud Probability Distribution",
+                    labels={'fraud_probability': 'Fraud Probability', 'count': 'Number of Jobs'}
+                )
+                fig_hist.update_traces(marker_color='lightblue', marker_line_color='navy', marker_line_width=1)
+                st.plotly_chart(fig_hist, use_container_width=True)
+            else:
+                # Fallback text-based analytics
+                st.subheader("📊 Fraud Probability Analysis")
+                prob_bins = pd.cut(df_results['fraud_probability'], bins=5, labels=['Very Low', 'Low', 'Medium', 'High', 'Very High'])
+                prob_counts = prob_bins.value_counts()
+                
+                st.write("**Fraud Probability Distribution:**")
+                for bin_name, count in prob_counts.items():
+                    st.write(f"• {bin_name}: {count} jobs ({count/total_jobs*100:.1f}%)")
             
             # Feature analysis
             st.subheader("📊 Key Insights")
