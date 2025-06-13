@@ -1,50 +1,90 @@
-﻿# job-fraud-detector
-🚀 Key Features of the Streamlit App:
-1. Multiple Input Methods:
+# 🛡️ Job Fraud Detection System
 
-Upload CSV files with job data
-Use sample data for testing
-Manual entry for single job analysis
+An AI-powered system to detect fraudulent job postings and protect job seekers from scams.
 
-2. Comprehensive Analysis:
+## 🚀 Live Demo
 
-Fraud probability scoring
-Risk level classification (High/Medium/Low)
-Pattern detection for suspicious keywords
-Company and location analysis
+**Try it now:** [Job Fraud Detector](https://your-app-name.streamlit.app)
 
-3. Interactive Dashboard:
+## 📋 Features
 
-Real-time metrics and KPIs
-Interactive charts and visualizations
-Fraud vs. genuine job distribution
-Risk level breakdown
+- **Real-time Analysis**: Upload CSV files or analyze individual job postings
+- **AI-Powered Detection**: Advanced pattern recognition for fraud indicators
+- **Interactive Dashboard**: Visual analytics and insights
+- **Risk Assessment**: Jobs classified as High, Medium, or Low risk
+- **Downloadable Reports**: Export results for further analysis
 
-4. Detailed Results:
+## 🔍 How It Works
 
-Sortable and filterable results table
-Downloadable CSV reports
-Detailed view of suspicious postings
-Analytics and insights
+1. **Data Input**: Upload job posting data or use sample data
+2. **AI Analysis**: System analyzes text patterns, keywords, and suspicious indicators
+3. **Risk Scoring**: Each job gets a fraud probability score (0-1)
+4. **Classification**: Jobs are marked as Genuine or Fraudulent
+5. **Insights**: View detailed analytics and fraud patterns
 
-5. Professional UI:
+## 📊 Key Fraud Indicators
 
-Clean, modern interface
-Color-coded results
-Responsive design
-Intuitive navigation with tabs
+- Unrealistic salary promises
+- Requests for upfront payments
+- Vague job descriptions
+- Urgency keywords ("immediate", "urgent")
+- Missing company information
+- Suspicious contact methods
 
-🔧 File Structure:
-your-project/
-├── app.py              # Main Streamlit application
-├── requirements.txt    # Python dependencies
-├── README.md          # Documentation (optional)
-└── sample_data.csv    # Sample data file (optional)
+## 🛠️ Technology Stack
 
-🎯 What the App Does:
+- **Python**: Core logic and data processing
+- **Streamlit**: Web application framework
+- **Pandas**: Data manipulation and analysis
+- **Plotly**: Interactive visualizations
+- **Scikit-learn**: Machine learning components
+- **RegEx**: Pattern matching for fraud detection
 
-Data Processing: Cleans and preprocesses job posting text
-Feature Engineering: Extracts fraud indicators and patterns
-ML Classification: Uses rule-based and pattern matching for fraud detection
-Visualization: Creates interactive charts and analytics
-Reporting: Provides detailed results and insights
+## 📈 Sample Results
+
+The system typically achieves:
+- High accuracy in detecting obvious fraud patterns
+- Low false positive rates for legitimate jobs
+- Comprehensive risk assessment with explanations
+
+## 🚀 Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/job-fraud-detector.git
+cd job-fraud-detector
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the app
+streamlit run app.py
+```
+
+## 📝 Data Format
+
+Upload CSV files with these columns:
+- `title`: Job title
+- `company`: Company name
+- `location`: Job location
+- `description`: Detailed job description
+- `requirements`: Job requirements and qualifications
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## ⚠️ Disclaimer
+
+This tool is for educational and informational purposes. Always verify job postings through official channels and exercise caution when job hunting.
+
+---
+
+**Built for the DS-1 Hackathon Challenge** 🏆
