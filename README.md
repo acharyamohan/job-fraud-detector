@@ -91,7 +91,7 @@ streamlit run app.py
 
 ## Example
 
-![Job Fraud Detector Dashboard Screenshot](https://user-images.githubusercontent.com/your_screenshot.png) 
+![Job Fraud Detector Dashboard Screenshot and Demo Videos](https://drive.google.com/drive/folders/1459nwxKun_Q_AUpBf5Rtj8I4kzZYFkO7?usp=sharing) 
 
 
 
