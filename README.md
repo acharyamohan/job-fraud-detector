@@ -120,16 +120,16 @@ streamlit run app.py
 ## 📸 Example Screenshots
 
 ### Dashboard Overview
-![Dashboard](https://github.com/acharyamohan/job-fraud-detector/blob/main/screenshots/Screenshot%202025-06-14%20014807.png)
+![Dashboard](https://github.com/acharyamohan/job-fraud-detector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/dash_board_overview.png)
 
 ### Upload & Results
-![Upload](https://github.com/acharyamohan/job-fraud-detector/blob/main/screenshots/Screenshot%202025-06-14%20014816.png)
+![Upload](https://github.com/acharyamohan/job-fraud-detector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/upload_and_results.png)
 
 ### Visual Analysis
-![Graphs](https://github.com/acharyamohan/job-fraud-detector/blob/main/screenshots/Screenshot%202025-06-14%20014826.png)
+![Graphs](https://github.com/acharyamohan/job-fraud-detector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/visual_analysis.png)
 
 ### Suspicious Postings
-![Details](https://github.com/acharyamohan/job-fraud-detector/blob/main/screenshots/Screenshot%202025-06-14%20014835.png)
+![Details](https://github.com/acharyamohan/job-fraud-zdetector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/suspicious_job.png)
 
 ---
 
