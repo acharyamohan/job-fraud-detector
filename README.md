@@ -19,7 +19,17 @@ An AI-powered system to detect fraudulent job postings and protect job seekers f
 
 ### 🔍 Key Features
 - **Rule-Based Fraud Detection**  
-  Uses heuristic scoring and keyword analysis to flag suspicious job postings.
+  Uses heuristic scoring and keyword analysis to flag suspicious job postings
+•	Checks for:
+o	Fraudulent keywords in title/description/requirements (e.g., "easy money", "urgent hiring").
+o	Suspicious patterns (e.g., unrealistic pay, requests for money, missing company info).
+o	Short or generic descriptions, excessive punctuation.
+o	Remote/work-from-home indicators.
+•	Outputs:
+o	Fraud probability (0-1)
+o	Prediction label (“Fraudulent”/“Genuine”)
+o	Risk level (“High”/“Medium”/“Low”)
+
 
 - **Machine Learning Model Training**  
   Trains a Random Forest classifier using rule-based output as labels to capture complex fraud patterns.
