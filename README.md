@@ -1,152 +1,224 @@
 
 # 🛡️ Job Fraud Detection System
 
-An AI-powered system to detect fraudulent job postings and protect job seekers from scams.
+An AI-powered tool that detects fraudulent job postings to protect job seekers from scams.
 
 ## 🚀 Live Demo
-
-**Try it now:** [Job Fraud Detector](https://job-fraud-detector.streamlit.app/)
-
----
-
-## Project Overview
-
-**Job Fraud Detector** is an AI-powered Streamlit web application designed to help users identify potentially fraudulent job postings. The app empowers job seekers, recruiters, and analysts to upload job datasets, analyze postings using both rule-based heuristics and machine learning, and visualize results via interactive dashboards. With features for model training and real-time prediction on new data, this tool aims to increase safety and transparency in the online job market.
+👉 [Try the App on Streamlit](https://job-fraud-detector.streamlit.app/)
 
 ---
 
-## Key Features & Technologies Used
+## 📑 Table of Contents
 
-### 🔍 Key Features
+- [Live Demo](#-live-demo)
+- [Project Overview](#project-overview)
+- [Key Features & Technologies](#-key-features--technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [Dashboard & Outputs](#dashboard--outputs)
+- [Example Use Cases](#example-use-cases)
+- [Extensibility](#extensibility)
+- [Screenshots](#-screenshots)
+- [Data Science Workflow](#data-science-workflow)
+- [Resources](#-resources)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+---
+
+## 📘 Project Overview
+
+**Job Fraud Detector** is a Streamlit-based AI web app that helps users detect potentially fraudulent job postings. Users can analyze datasets using rule-based heuristics and machine learning models, and view results through rich interactive dashboards.
+
+---
+
+## 🔍 Key Features & Technologies Used
+
+### 🔍 Features
+
 - **Rule-Based Fraud Detection**  
-  Uses heuristic scoring and keyword analysis to flag suspicious job postings.
+  - Scans for fraudulent keywords (e.g., "easy money", "urgent hiring")
+  - Flags suspicious job characteristics (e.g., missing company info, unrealistic salary)
+  - Evaluates short/generic descriptions, excessive punctuation, etc.
+  - Generates fraud **probability**, **label**, and **risk level**
 
-  **Checks for:**
-  - Fraudulent keywords in title/description/requirements (e.g., "easy money", "urgent hiring").
-  - Suspicious patterns (e.g., unrealistic pay, requests for money, missing company info).
-  - Short or generic descriptions, excessive punctuation.
-  - Remote/work-from-home indicators.
+- **Machine Learning Model**  
+  - Trains a `RandomForestClassifier` based on rule-based detections
+  - Saves and reuses model (`fraud_model.pkl`) and scaler (`scaler.pkl`)
 
-  **Outputs:**
-  - Fraud probability (0-1)
-  - Prediction label (“Fraudulent”/“Genuine”)
-  - Risk level (“High”/“Medium”/“Low”)
-
-
-- **Machine Learning Model Training**  
-  Trains a Random Forest classifier using rule-based output as labels to capture complex fraud patterns.
-
-- **Prediction on New Data**  
-  Apply the trained model to new or test datasets to classify jobs as fraudulent or genuine.
+- **Real-Time Prediction**  
+  - Apply the trained model to new/test data
+  - Visual output with charts and dashboards
 
 - **Interactive Dashboard**  
-  Visualizes results with pie charts, bar graphs, distribution plots, metrics, and detailed tables.
+  - Metrics summary, pie & bar charts, probability histograms
+  - Styled results table with fraud level indicators
+  - Expandable panels for suspicious job details
 
-- **Sample Data & Easy Upload**  
-  Test the app instantly with built-in sample data or upload your own CSV files.
-
-- **Downloadable Reports & Models**  
-  Download analysis results, trained ML models, and scalers for further use.
-
-### 🛠 Technologies Used
-- **Python 3.x**
-- **[Streamlit](https://streamlit.io/):** For web app UI and dashboarding  
-- **[scikit-learn](https://scikit-learn.org/):** Machine learning (Random Forest, scaling, splitting)  
-- **[pandas](https://pandas.pydata.org/):** Data manipulation and analysis  
-- **[joblib](https://joblib.readthedocs.io/):** Model and scaler serialization  
-- **[plotly](https://plotly.com/):** Advanced and interactive charts/visualizations  
-- **[numpy](https://numpy.org/):** Numerical processing
+- **Easy Upload & Download**  
+  - Upload CSV files or use built-in sample data
+  - Export results and models for reuse
 
 ---
 
-## Setup Instructions
+### 🛠 Technologies Used
 
-### 1. **Clone the Repository**
+- **Python 3.x**
+- [Streamlit](https://streamlit.io/)
+- [scikit-learn](https://scikit-learn.org/)
+- [pandas](https://pandas.pydata.org/)
+- [numpy](https://numpy.org/)
+- [plotly](https://plotly.com/)
+- [joblib](https://joblib.readthedocs.io/)
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/acharyamohan/job-fraud-detector.git
 cd job-fraud-detector
 ```
 
-### 2. **Install Required Dependencies**
-It’s recommended to use a virtual environment.
+### 2. Install Dependencies
+
+Using `requirements.txt`:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-If `requirements.txt` is missing, install manually:
+Or install manually:
+
 ```bash
 pip install streamlit pandas scikit-learn joblib plotly numpy
 ```
 
-### 3. **Run the Application**
+### 3. Run the App
+
 ```bash
 streamlit run app.py
 ```
 
-### 4. **Using the App**
+---
 
-- **Choose a Mode:**  
-  Select from the sidebar:
-  - Rule-based Fraud Detection (with Dashboard)
-  - Train ML Model Using Rule-based Results
-  - Predict on Test Data with Trained ML Model (with Dashboard)
+### 4. Expected CSV Format
 
-- **Load Data:**  
-  Upload your own CSV file or use the provided sample data.  
-  CSV columns expected: `title`, `description`, `company`, `location`, `requirements`
+Your dataset should include the following columns:
 
-- **Explore Results:**  
-  View dashboards, download results, and inspect high-risk jobs.
-
-- **Train and Apply ML Model:**  
-  Use the detected results to train a model, then apply it to new data.
+| Column        | Description                      | Required |
+|---------------|----------------------------------|----------|
+| `title`       | Job title                        | ✅       |
+| `description` | Job description                  | ✅       |
+| `company`     | Company name                     | ❌       |
+| `location`    | Job location                     | ❌       |
+| `requirements`| Skills or qualifications         | ❌       |
 
 ---
 
-### 5. **Dashboard & Outputs**
-- **Metrics row:** Total, fraudulent, genuine, high-risk jobs  
-- **Pie chart:** Fraudulent vs. genuine distribution  
-- **Bar chart:** Risk levels  
-- **Histogram:** Fraud probability scores  
-- **Results table:** Styled by fraud/risk  
-- **Detailed suspicious jobs:** Expandable panels  
-- **Download buttons:** CSV for results, trained model/scaler  
+## 📊 Dashboard & Outputs
+
+- **Top Metrics**: Total, genuine, fraudulent, and high-risk job counts
+- **Pie Chart**: Fraudulent vs. genuine postings
+- **Bar Chart**: Risk level breakdown
+- **Histogram**: Fraud probability distribution
+- **Results Table**: Color-coded predictions
+- **Suspicious Jobs**: Expandable sections for high-risk posts
+- **Downloadable Files**: Results CSV, model `.pkl`, and scaler `.pkl`
 
 ---
 
-### 6. **Example Use Cases**
-- **Job Seekers:** Check if a posting is suspicious before applying  
-- **Recruiters:** Audit job boards for scam/fake ads  
-- **Analysts:** Study trends in fraudulent postings  
+## 🧪 Example Use Cases
+
+- **Job Seekers**: Detect scams before applying
+- **Recruiters**: Audit platforms for fake or misleading job posts
+- **Analysts**: Study patterns and behaviors in fraudulent job markets
 
 ---
 
-### 7. **Extensibility**
-- Easily add more features (new keywords, ML models, NLP analysis)  
-- Integrate with actual labeled data for supervised ML  
-- Deploy to cloud for public access  
+## 🔄 Extensibility
+
+- Add more advanced NLP models (e.g., BERT, LSTM)
+- Integrate actual labeled fraud datasets for supervised learning
+- Add authentication and API integration for job boards
+- Deploy to cloud platforms (e.g., AWS, GCP, Heroku)
 
 ---
 
-## 📸 Example Screenshots
+## 📸 Screenshots
 
-### Dashboard Overview
-![Dashboard](https://github.com/acharyamohan/job-fraud-detector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/dash_board_overview.png)
+### Dashboard Overview  
+![Dashboard](https://raw.githubusercontent.com/acharyamohan/job-fraud-detector/main/dash_board_overview.png)
 
-### Upload & Results
-![Upload](https://github.com/acharyamohan/job-fraud-detector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/upload_and_results.png)
+### Upload & Results  
+![Upload](https://raw.githubusercontent.com/acharyamohan/job-fraud-detector/main/upload_and_results.png)
 
-### Visual Analysis
-![Graphs](https://github.com/acharyamohan/job-fraud-detector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/visual_analysis.png)
+### Visual Analysis  
+![Graphs](https://raw.githubusercontent.com/acharyamohan/job-fraud-detector/main/visual_analysis.png)
 
-### Suspicious Postings
-![Details](https://github.com/acharyamohan/job-fraud-detector/blob/6dcf52a4f1deb425d428a1c57dcc6b0d49b9e9e4/suspicious_job.png)
+### Suspicious Postings  
+![Details](https://raw.githubusercontent.com/acharyamohan/job-fraud-detector/main/suspicious_job.png)
 
 ---
 
-**📁 Resources**  
-• [Download Model (fraud_model.pkl)](https://drive.google.com/...)  
-• [Download Scaler (scaler.pkl)](https://drive.google.com/...)  
-• [Sample Dataset (optional)](https://drive.google.com/...)
+## 🧠 Data Science Workflow
 
+### 1. 📥 Input & Feature Engineering
+Users upload job data with required columns. Features are extracted including:
+- Title/description lengths
+- Fraud keyword counts
+- Flags for suspicious patterns (e.g., urgency, remote jobs)
+
+```python
+features = detector.extract_features(df)
+```
+
+### 2. 🧾 Rule-Based Detection (Mode 1)
+Simple heuristics assign fraud probability:
+
+- Keyword and regex matching
+- Score threshold:  
+  - Fraudulent if score > 0.5  
+  - High risk: > 0.7, Medium: 0.4–0.7, Low: < 0.4
+
+### 3. 🤖 Machine Learning (Mode 2 & 3)
+
+#### 🛠 Training
+- Uses rule-based output as pseudo labels
+- Features scaled via `StandardScaler`
+- `RandomForestClassifier` trained on 80/20 split
+- Model saved as `fraud_model.pkl`
+
+```python
+joblib.dump(model, 'fraud_model.pkl')
+joblib.dump(scaler, 'scaler.pkl')
+```
+
+#### 🔍 Prediction
+- Loads the model and scaler
+- Applies to new test data
+- Full dashboard with predicted labels, risk scores, charts
+
+---
+
+## 📁 Resources
+
+- 📦 [Download Model (`fraud_model.pkl`)](https://drive.google.com/...)
+- 📦 [Download Scaler (`scaler.pkl`)](https://drive.google.com/...)
+- 📄 [Sample Dataset](https://drive.google.com/...)
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!  
+Please fork the repo and open a pull request.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
