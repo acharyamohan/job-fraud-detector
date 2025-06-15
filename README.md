@@ -6,6 +6,12 @@ An AI-powered system to detect fraudulent job postings and protect job seekers f
 ## 🚀 Live Demo
 
 **Try it now:** [Job Fraud Detector](https://job-fraud-detector.streamlit.app/)
+---
+## 🚀  Video Presentation Link
+
+**Watch it now:** [ Video Presentation Link](https://youtu.be/ISzTRobBQ8M?feature=shared
+)
+
 
 ---
 
@@ -187,9 +193,9 @@ joblib.dump(scaler, 'scaler.pkl')
 
 ## 📁 Resources
 
-- 📦 [Download Model (`fraud_model.pkl`)](https://drive.google.com/...)
-- 📦 [Download Scaler (`scaler.pkl`)](https://drive.google.com/...)
-- 📄 [Sample Dataset](https://drive.google.com/...)
+- 📦 [Download Model (`fraud_model.pkl`)](https://drive.google.com/file/d/1ZaMSGWRFGenNWMB1FjBwzxOAPvRiACNC/view?usp=drive_link)
+- 📦 [Download Scaler (`scaler.pkl`)](https://drive.google.com/file/d/1hyKkz6dx5dKOejfX4nOZh-_EiVk6QQfc/view?usp=drive_link)
+- 📄 [Sample Dataset](https://drive.google.com/file/d/1DzaoaL_R-u3QPZe0LWaIiGmMjw8UZGKV/view?usp=drive_link)
 
 ---
 
