@@ -145,11 +145,8 @@ streamlit run app.py
 
 ---
 
-## Acknowledgements
+**📁 Resources**  
+• [Download Model (fraud_model.pkl)](https://drive.google.com/...)  
+• [Download Scaler (scaler.pkl)](https://drive.google.com/...)  
+• [Sample Dataset (optional)](https://drive.google.com/...)
 
-- Inspired by the need for safer online job searching.  
-- Built with Streamlit, scikit-learn, pandas, and plotly.
-
----
-
-**Contributions, bug reports, and ideas welcome!**
