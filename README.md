@@ -150,7 +150,7 @@ streamlit run app.py
 ### 1. 📥 Input & Feature Engineering
 Users upload job data with required columns. Features are extracted including:
 - Title/description lengths
-- Fraud keyword counts
+- Fraud keyword (‘easy money’, ‘urgent hiring’, or ‘no experience needed’) counts
 - Flags for suspicious patterns (e.g., urgency, remote jobs)
 
 ```python
