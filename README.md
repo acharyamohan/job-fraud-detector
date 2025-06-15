@@ -125,9 +125,19 @@ streamlit run app.py
 ### 7. **Extensibility**
 - Easily add more features (new keywords, ML models, NLP analysis)  
 - Integrate with actual labeled data for supervised ML  
-- Deploy to cloud for public access  
+- Deploy to cloud for public access
+  
 
 ---
+
+joblib.dump(model, 'fraud_model.pkl')
+joblib.dump(scaler, 'scaler.pkl')
+
+**📁 Resources**  
+• [Download Model (fraud_model.pkl)](https://drive.google.com/...)  
+• [Download Scaler (scaler.pkl)](https://drive.google.com/...)  
+• [Sample Dataset (optional)](https://drive.google.com/...)
+
 
 ## 📸 Example Screenshots
 
